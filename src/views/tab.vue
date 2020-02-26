@@ -16,7 +16,7 @@
         :line-width="2"
         active-color="#66CBE6"
         default-color="#333"
-        custom-bar-width="20px"
+        custom-bar-width="0px"
         v-model="index"
       >
         <tab-item class="vux-center" v-for="(item, index) in list2" :key="index">{{item.title}}</tab-item>
@@ -318,5 +318,19 @@ export default {
 }
 .scrollable .vux-tab-item {
   flex: 0 0 19%;
+}
+.vux-tab .vux-tab-item.vux-tab-selected{
+  position: relative;
+}
+.vux-tab .vux-tab-item.vux-tab-selected::before{
+  content:'';
+  width: 30px;
+  height: 2px;
+  background: #68dbed;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  margin-left: -15px;
+
 }
 </style>
