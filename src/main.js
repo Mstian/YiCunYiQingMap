@@ -34,7 +34,9 @@ Vue.component('tab-item', TabItem)
 Vue.component('x-button', XButton)
 Vue.component('swiper', Swiper)
 Vue.component('swiper-item', SwiperItem)
-import load from '@/components/loadmore'
+import load from '@/components/loadmore';
+import {baseurl} from '../src/utils/tools';
+Vue.prototype.$baseurl= baseurl; 
 Vue.component('load',load)
 new Vue({
   router,

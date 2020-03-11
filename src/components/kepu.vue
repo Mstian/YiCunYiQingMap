@@ -51,7 +51,7 @@ export default {
             });
             return 
           }
-          this.kepu_data = data.lists;
+          this.kepu_data = this.kepu_data.concat(data.lists);
         }
       })
     }

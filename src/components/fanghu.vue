@@ -39,7 +39,7 @@ export default {
   methods: {
     jumptodetail(item) {
       if(isShare){
-         window.location.href = 'http://tt.ybhealth.com/yiqing_share/index.html#/fanghushare/?id='+item.id
+         window.location.href = 'http://toutiao.ybhealth.com/yiqing_share/index.html#/fanghushare/?id='+item.id
       }else{
         this.$store.dispatch('patch_change_detail',item);
       }

@@ -9,3 +9,4 @@ export function formatDate(timestamp){
      return Y+M+D+h+m;
 }
 export const isShare = false;
+export const baseurl = 'http://toutiao.ybhealth.com/';

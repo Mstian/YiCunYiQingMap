@@ -53,7 +53,7 @@ export default {
               });
               return;
             }
-            this.piyao_data = data.lists;
+            this.piyao_data = this.piyao_data.concat(data.lists);
           }
         });
     }

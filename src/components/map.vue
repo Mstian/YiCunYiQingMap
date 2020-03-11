@@ -76,7 +76,7 @@
         >
           <el-submenu
             v-for="(item,index_i) in province_data"
-            :key="item.locationId"
+            :key="item.provinceShortName"
             :index="index_i.toString()"
           >
             <template slot="title">
@@ -174,18 +174,48 @@ export default {
           }
         });
       } else {
-        if(this.$route.query.province){
-          this.getdata(this.$route.query.province);
-        }else{
-          this.getdata('湖北');
+        // console.log("原生定位");
+        // console.log(this.$route)
+        var region = '湖北';
+        // console.log(window.location.search)
+        if (window.location.search.length > 0) {
+          var qs =
+              location.search.length > 0 ? location.search.substring(1) : "",
+            args = {},
+            items = qs.length ? qs.split("&") : [],
+            item = null,
+            name = null,
+            value = null,
+            i = 0,
+            len = items.length;
+          for (i = 0; i < len; i++) {
+            item = items[i].split("=");
+            name = decodeURIComponent(item[0]);
+            value = decodeURIComponent(item[1]); //执行解码，因为中文字符串往往在传递时被编码过了
+            if (name.length) args[name] = value;
+          }
+          region = args.province;
         }
+        // console.log(region,'123')
+        // if (this.$route.query.province) {
+        //   console.log(this.$route.query.province, "获取到原生传过来的");
+        //   var region = "湖北";
+        //   if (this.$route.query.province.indexOf("#/")) {
+        //     region = this.$route.query.province.replace("#/", "");
+        //   }
+        //   console.log(region, "修改过的");
+        //   this.getdata(region);
+        // } else {
+        //   this.getdata(region);
+        // }
+        this.getdata(region);
         //app内原生定位
       }
     },
     //渲染地图
     setMap(mydata, province_index) {
       var mapContent = document.getElementById("map_content");
-      mapContent.style.width=window.innerWidth - 30 +'px'
+      mapContent.style.width = window.innerWidth - 30 + "px";
       var myChart = this.$echarts.init(mapContent);
       var optionMap = {
         backgroundColor: "#fff",
@@ -330,7 +360,6 @@ export default {
           });
         }
       });
-   
     },
     //地图数据
     getdata(region) {
@@ -425,7 +454,7 @@ export default {
         deadCount.push(tendays[j].deadCount);
       }
       var getChartId = document.getElementById("tendays");
-      getChartId.style.width=window.innerWidth -20 +'px'
+      getChartId.style.width = window.innerWidth - 20 + "px";
       var myChart = this.$echarts.init(getChartId);
       var option = {
         title: {
@@ -563,7 +592,6 @@ export default {
 
       // 为echarts对象加载数据
       myChart.setOption(option);
-      
     },
     //坐标信息
     getDay(day) {

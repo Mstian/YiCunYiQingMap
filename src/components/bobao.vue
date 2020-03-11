@@ -55,7 +55,7 @@ export default {
             });
             return;
           }
-          this.bobao_data = data.lists;
+          this.bobao_data = this.bobao_data.concat(data.lists);
         }
       })
     }

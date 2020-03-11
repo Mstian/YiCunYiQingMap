@@ -52,7 +52,7 @@ export default {
         AndroidJs.toShare(
           "个人疫情防护信息",
           "个人如何避免感染疫情，及时分享，掌握科学防疫知识。",
-          "http://tt.ybhealth.com/yiqing_share/index.html#/fanghushare/?id=" +
+          "http://toutiao.ybhealth.com/yiqing_share/index.html#/fanghushare/?id=" +
             id,
           "http://newyibangshop.oss-cn-beijing.aliyuncs.com/images/202002/thumb_img/3470_thumb_P_1580864691314.jpg",
           "650"
@@ -62,7 +62,7 @@ export default {
           title: "个人疫情防护信息",
           desc: "个人如何避免感染疫情，及时分享，掌握科学防疫知识。",
           link:
-            "http://tt.ybhealth.com/yiqing_share/index.html#/fanghushare/?id=" +
+            "http://toutiao.ybhealth.com/yiqing_share/index.html#/fanghushare/?id=" +
             id,
           pic:
             "https://ae01.alicdn.com/kf/H73183f051fd64c01912a38cce16f5156L.png",

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <wait v-if="isShare && showWait"/>
+    <wait v-if="isShare && showWait" />
     <toast />
     <sharemask />
     <sharebtn v-if="txt.length > 0" :txt="txt" :shareMsg="shareMsg" />
@@ -71,16 +71,17 @@ export default {
         "个人防护",
         "同城查询"
       ],
-      index: 5,
+      index:0,
       txt: "",
       isShare: isShare,
       detailShow: false,
-      showWait:true,
+      showWait: true
     };
   },
   beforeMount() {
+    if (isShare) {
       this.index = parseInt(this.$route.query.tabIndex);
-      console.log(this.index,'838383');
+    }
   },
   methods: {
     opApp() {
@@ -88,7 +89,7 @@ export default {
     },
     changeIndex(index) {
       var link =
-        "http://tt.ybhealth.com/yiqing_share/index.html#/?tabIndex=" + index;
+        "http://toutiao.ybhealth.com/yiqing_share/index.html#/?tabIndex=" + index;
       if (index == 0) {
         this.txt = "分享疫情实时数据";
         this.shareMsg = {
@@ -169,11 +170,13 @@ export default {
       });
     },
     testIndex() {
-      this.index = parseInt(this.$route.query.tabIndex);
+      if(isShare){
+        this.index = parseInt(this.$route.query.tabIndex);
+      }
       var index = this.index;
-      console.log(index,'111111111111111');
+      // console.log(index,'11111')
       var link =
-        "http://tt.ybhealth.com/yiqing_share/index.html#/?tabIndex=" + index;
+        "http://toutiao.ybhealth.com/yiqing_share/index.html#/?tabIndex=" + index;
       if (index == 0) {
         this.txt = "分享疫情实时数据";
         this.shareMsg = {
@@ -259,9 +262,9 @@ export default {
     this.getTabs();
     this.testIndex();
     var _this = this;
-    setTimeout(()=>{
+    setTimeout(() => {
       _this.showWait = false;
-    },3000)
+    }, 3000);
   }
 };
 </script>
@@ -319,11 +322,11 @@ export default {
 .scrollable .vux-tab-item {
   flex: 0 0 19%;
 }
-.vux-tab .vux-tab-item.vux-tab-selected{
+.vux-tab .vux-tab-item.vux-tab-selected {
   position: relative;
 }
-.vux-tab .vux-tab-item.vux-tab-selected::before{
-  content:'';
+.vux-tab .vux-tab-item.vux-tab-selected::before {
+  content: "";
   width: 30px;
   height: 2px;
   background: #68dbed;
@@ -331,6 +334,5 @@ export default {
   bottom: 0;
   left: 50%;
   margin-left: -15px;
-
 }
 </style>
